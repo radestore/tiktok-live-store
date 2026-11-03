@@ -3,85 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TikTok Live Games Store</title>
+    <title>Expédition des Mers - Jeu TikTok Live</title>
     <style>
         body {
-            background-color: #0b0b0e;
+            background: #050c19;
             color: #ffffff;
             font-family: Arial, sans-serif;
             text-align: center;
-            padding: 20px;
-        }
-        h1 {
-            color: #ff0050;
+            padding: 40px 20px;
+            margin: 0;
         }
         .container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 40px;
+            max-width: 600px;
+            margin: 0 auto;
+            background: #0b192c;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 25px rgba(0, 255, 204, 0.2);
+            border: 2px solid #00ffcc;
         }
-        .card {
-            background: #16161d;
-            border: 2px solid #ff0050;
-            border-radius: 10px;
-            padding: 20px;
-            width: 300px;
-            text-align: left;
+        h1 {
+            color: #00ffcc;
+            font-size: 2.5em;
+            margin-bottom: 10px;
         }
-        .card.coming-soon {
-            border-color: #00f2fe;
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #cfd8dc;
+            margin-bottom: 30px;
         }
         .price {
-            font-size: 1.2em;
+            font-size: 1.8em;
+            color: #ffd700;
             font-weight: bold;
-            color: #00f2fe;
-            margin: 15px 0;
+            margin-bottom: 20px;
         }
         .btn {
-            display: inline-block;
-            background: #0070ba;
-            color: white;
-            padding: 10px 15px;
+            background: #00ffcc;
+            color: #050c19;
+            padding: 18px 35px;
             text-decoration: none;
-            border-radius: 5px;
             font-weight: bold;
-            text-align: center;
-            width: 100%;
-            box-sizing: border-box;
+            font-size: 1.2em;
+            border-radius: 8px;
+            display: inline-block;
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
+            transition: background 0.2s;
         }
         .btn:hover {
-            background: #003087;
+            background: #00cca3;
+        }
+        .features {
+            text-align: left;
+            margin: 30px 0;
+            background: #050c19;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .features li {
+            margin-bottom: 10px;
+            color: #cfd8dc;
         }
     </style>
 </head>
 <body>
 
-    <h1>🎮 TIKTOK LIVE GAMES STORE 🎮</h1>
-    <p>Propulsez vos lives avec des jeux interactifs uniques pour votre communauté !</p>
-
     <div class="container">
-        <!-- Jeu 1 : Expédition des Mors -->
-        <div class="card">
-            <h2>🏴‍☠️ Expédition des Mors</h2>
-            <p>Aventure de Capitaine Pirates en 3 phases, survivez au mode Mephisto (Pièges) et décrochez le Ralle-Mystère mobile final pour remporter des cadeaux légendaires !</p>
-            <div class="price">5,00 €</div>
-            <a href="https://www.paypal.me/PTanghe53/5" target="_blank" class="btn">Acheter via PayPal (5,00 €)</a>
+        <h1>🏴‍☠️ Expédition des Mers</h1>
+        <p>Dynamise tes lives TikTok avec ce mini-jeu interactif ultra-immersif ! Tes abonnés s'affrontent en direct pour faire avancer le navire et vaincre le boss.</p>
+        
+        <div class="features">
+            <strong>Ce que tu obtiens :</strong>
+            <ul>
+                <li>⚡ Le code source complet et propre (Node.js / Socket.io)</li>
+                <li>🎮 L'interface de jeu et le panneau de contrôle animateur</li>
+                <li>🚀 Installation simple et rapide en quelques clics</li>
+            </ul>
         </div>
 
-        <!-- Jeu 2 : Nuit d'Horreur -->
-        <div class="card coming-soon">
-            <h2>🎃 Nuit d'Horreur (Bientôt)</h2>
-            <p>Un tout nouveau style de jeu englobant ! Survivez aux vagues de zombies et déclenchez des jumpscares terrifiants grâce aux cadeaux de vos spectateurs en live.</p>
-            <div class="price">Bientôt</div>
-            <a href="#" class="btn" style="background: #555; cursor: not-allowed;">Bientôt disponible</a>
-        </div>
+        <div class="price">5,00 €</div>
+
+        <!-- Remplace le '#' par ton lien de paiement ou ton lien Google Drive de livraison -->
+        <a href="TON_LIEN_DE_ PAIEMENT_OU_DE_TELECHARGEMENT" class="btn" target="_blank">Acheter et télécharger le jeu</a>
     </div>
-
-    <footer style="margin-top: 50px; font-size: 0.8em; color: #777;">
-        &copy; 2026 TikTok Live Games Store - Tous droits réservés.
-    </footer>
 
 </body>
 </html>
