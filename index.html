@@ -16,9 +16,65 @@
             color: #ffffff;
             min-height: 100vh;
             padding: 50px 20px;
-            perspective: 1200px; /* Indispensable pour l'effet 3D global */
+            perspective: 1200px;
             overflow-x: hidden;
         }
+
+        /* ==========================================================
+           ÉCRAN DE MAINTENANCE EN PLEIN ÉCRAN
+           Pour réactiver le site plus tard : il te suffit de 
+           supprimer ou de mettre en commentaire (<!-- ... -->) 
+           tout ce bloc .maintenance-overlay dans ton code !
+           ================================================---------- */
+        .maintenance-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(17, 3, 3, 0.95);
+            backdrop-filter: blur(15px);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .maintenance-box {
+            background: linear-gradient(145deg, rgba(50, 12, 12, 0.95), rgba(30, 6, 6, 0.95));
+            border: 2px solid #ffaa00;
+            border-radius: 24px;
+            padding: 40px;
+            max-width: 550px;
+            width: 100%;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 30px rgba(255, 170, 0, 0.3);
+        }
+        .maintenance-box h2 {
+            font-size: 2.2rem;
+            color: #ffaa00;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px rgba(255, 170, 0, 0.5);
+        }
+        .maintenance-box p {
+            font-size: 1.1rem;
+            color: #ffcccc;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        .maintenance-badge {
+            background: rgba(255, 170, 0, 0.15);
+            border: 1px solid #ffaa00;
+            color: #ffdd99;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            display: inline-block;
+        }
+        /* ========================================================== */
+
         header {
             text-align: center;
             margin-bottom: 50px;
@@ -43,7 +99,6 @@
             gap: 40px;
             padding: 20px;
         }
-        /* Effet 3D sur les cartes */
         .game-card {
             background: linear-gradient(145deg, rgba(50, 12, 12, 0.9), rgba(30, 6, 6, 0.95));
             border: 1px solid rgba(255, 68, 68, 0.4);
@@ -96,7 +151,6 @@
             position: relative;
             overflow: hidden;
         }
-        /* Effet de lueur 3D interne sur l'image */
         .game-image-box::after {
             content: '';
             position: absolute;
@@ -109,7 +163,7 @@
             font-weight: bold;
             font-size: 1.2rem;
             text-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
-            transform: translateZ(20px); /* Fait ressortir le texte en 3D */
+            transform: translateZ(20px);
         }
         .game-content {
             padding: 30px;
@@ -118,7 +172,7 @@
             flex-direction: column;
             flex-grow: 1;
             justify-content: space-between;
-            transform: translateZ(10px); /* Effet de profondeur 3D sur le texte */
+            transform: translateZ(10px);
         }
         .game-content h2 {
             color: #ff6b6b;
@@ -184,8 +238,8 @@
             box-shadow: 0 8px 25px rgba(0, 112, 186, 0.7);
         }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         footer {
             text-align: center;
@@ -197,6 +251,21 @@
     </style>
 </head>
 <body>
+
+    <!-- ========================================================== -->
+    <!-- FENÊTRE DE MAINTENANCE (Masque tout pour l'instant) -->
+    <!-- ========================================================== -->
+    <div class="maintenance-overlay">
+        <div class="maintenance-box">
+            <h2>⚓ Expédition des Mers ⚓</h2>
+            <p>Le site est actuellement en pause technique. Nous effectuons les derniers tests sur les lives TikTok. Les achats seront bientôt ouverts !</p>
+            <div class="maintenance-badge">🚧 Tests en cours - Achats suspendus 🚧</div>
+        </div>
+    </div>
+
+    <!-- ========================================================== -->
+    <!-- TON SITE 3D OFFICIEL (Il est bien là en dessous, en sécurité) -->
+    <!-- ========================================================== -->
 
     <header>
         <h1>🔥 Expédition des Mers 🔥</h1>
