@@ -12,186 +12,248 @@
         }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1a0505, #3a0808, #610c0c);
+            background: radial-gradient(circle at center, #2b0808 0%, #110303 100%);
             color: #ffffff;
             min-height: 100vh;
-            padding: 40px 20px;
+            padding: 50px 20px;
+            perspective: 1200px; /* Indispensable pour l'effet 3D global */
             overflow-x: hidden;
         }
         header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             animation: fadeIn 1s ease-in-out;
         }
         header h1 {
-            font-size: 3rem;
+            font-size: 3.2rem;
             color: #ff4d4d;
-            text-shadow: 0 0 20px rgba(255, 77, 77, 0.8), 0 0 40px rgba(255, 0, 0, 0.5);
+            text-shadow: 0 0 25px rgba(255, 77, 77, 0.9), 0 0 50px rgba(255, 0, 0, 0.6);
             margin-bottom: 10px;
+            letter-spacing: 1px;
         }
         header p {
             font-size: 1.2rem;
             color: #fce8e6;
         }
         .catalog-container {
-            max-width: 1000px;
+            max-width: 950px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 40px;
+            padding: 20px;
         }
+        /* Effet 3D sur les cartes */
         .game-card {
-            background: rgba(45, 10, 10, 0.85);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 68, 68, 0.3);
-            border-radius: 20px;
+            background: linear-gradient(145deg, rgba(50, 12, 12, 0.9), rgba(30, 6, 6, 0.95));
+            border: 1px solid rgba(255, 68, 68, 0.4);
+            border-radius: 24px;
             overflow: hidden;
-            box-shadow: 0 15px 40px rgba(255, 0, 0, 0.3);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+            transform-style: preserve-3d;
             animation: fadeIn 1s ease-in-out;
+            position: relative;
         }
         .game-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 50px rgba(255, 85, 0, 0.6);
+            transform: translateY(-10px) rotateX(4deg) rotateY(-4deg);
+            box-shadow: 0 30px 70px rgba(255, 0, 0, 0.4), 0 0 30px rgba(255, 100, 0, 0.2);
+            border-color: rgba(255, 100, 100, 0.8);
+        }
+        .game-card.featured {
+            border: 2px solid #ffaa00;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(255, 170, 0, 0.25);
+        }
+        .game-card.featured:hover {
+            box-shadow: 0 30px 70px rgba(255, 170, 0, 0.5), 0 0 40px rgba(255, 120, 0, 0.3);
+            border-color: #ffbb33;
+        }
+        .badge-vip {
+            position: absolute;
+            top: 20px;
+            right: -32px;
+            background: linear-gradient(135deg, #ffaa00, #ff6600);
+            color: #1a0505;
+            font-weight: bold;
+            font-size: 0.8rem;
+            padding: 6px 35px;
+            transform: rotate(45deg);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            letter-spacing: 1px;
+            z-index: 10;
         }
         .game-image-box {
             width: 100%;
-            height: 180px;
-            background: linear-gradient(45deg, #2a0808, #5a1111);
+            height: 170px;
+            background: linear-gradient(135deg, #3d0a0a, #1a0303);
             display: flex;
             align-items: center;
             justify-content: center;
+            border-bottom: 1px solid rgba(255, 68, 68, 0.2);
             position: relative;
             overflow: hidden;
-            border-bottom: 1px solid rgba(255, 68, 68, 0.2);
+        }
+        /* Effet de lueur 3D interne sur l'image */
+        .game-image-box::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle, rgba(255,100,100,0.15) 0%, transparent 70%);
+            pointer-events: none;
         }
         .game-placeholder-text {
-            color: #ff9999;
+            color: #ffb3b3;
             font-weight: bold;
-            font-size: 1.1rem;
-            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+            font-size: 1.2rem;
+            text-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+            transform: translateZ(20px); /* Fait ressortir le texte en 3D */
         }
         .game-content {
-            padding: 25px;
+            padding: 30px;
             text-align: left;
-            flex-grow: 1;
             display: flex;
             flex-direction: column;
+            flex-grow: 1;
             justify-content: space-between;
+            transform: translateZ(10px); /* Effet de profondeur 3D sur le texte */
         }
         .game-content h2 {
             color: #ff6b6b;
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            text-shadow: 0 0 8px rgba(255, 107, 107, 0.4);
+            font-size: 1.6rem;
+            margin-bottom: 5px;
+        }
+        .price {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #ff4d4d;
+            margin-bottom: 15px;
+            text-shadow: 0 0 15px rgba(255, 77, 77, 0.5);
+        }
+        .game-card.featured .price {
+            color: #ffaa00;
+            text-shadow: 0 0 15px rgba(255, 170, 0, 0.6);
         }
         .game-content p {
             font-size: 0.95rem;
             color: #ffcccc;
-            line-height: 1.5;
+            line-height: 1.6;
             margin-bottom: 20px;
         }
-        .btn-group {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+        .update-notice {
+            background: rgba(255, 170, 0, 0.12);
+            border-left: 3px solid #ffaa00;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: #ffdd99;
+            margin-bottom: 20px;
+        }
+        .secure-notice {
+            background: rgba(255, 0, 0, 0.12);
+            border-left: 3px solid #ff4d4d;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: #ffb3b3;
+            margin-bottom: 20px;
         }
         .btn {
             display: block;
             width: 100%;
-            padding: 12px;
-            font-size: 1rem;
+            padding: 14px;
+            font-size: 1.05rem;
             font-weight: bold;
             text-decoration: none;
-            border-radius: 10px;
+            border-radius: 12px;
             transition: all 0.3s ease;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            cursor: pointer;
         }
         .btn-paypal {
             background: linear-gradient(135deg, #0070ba, #00457c);
             color: white;
-            border: 1px solid rgba(0, 150, 255, 0.4);
+            border: 1px solid rgba(0, 150, 255, 0.5);
         }
         .btn-paypal:hover {
-            background: linear-gradient(135deg, #0080d0, #00508c);
-            transform: translateY(-2px);
-        }
-        .btn-download {
-            background: linear-gradient(135deg, #ff2a2a, #cc0000);
-            color: white;
-            border: 1px solid rgba(255, 100, 100, 0.5);
-        }
-        .btn-download:hover {
-            background: linear-gradient(135deg, #ff4d4d, #e60000);
-            transform: translateY(-2px);
+            background: linear-gradient(135deg, #0085db, #00508c);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 112, 186, 0.7);
         }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
+            from { opacity: 0; transform: translateY(-30px); }
             to { opacity: 1; transform: translateY(0); }
         }
         footer {
             text-align: center;
-            margin-top: 50px;
+            margin-top: 60px;
             font-size: 0.9rem;
             color: #d1a1a1;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>🔥 Mes Jeux TikTok 🔥</h1>
-        <p>Choisis ton jeu interactif, règle ta contribution et lance l'aventure !</p>
+        <h1>🔥 Expédition des Mers 🔥</h1>
+        <p>Choisis ton accès pour tes lives TikTok interactifs !</p>
     </header>
 
     <div class="catalog-container">
         
-        <!-- JEU 1 : EXPÉDITION DES MERS -->
+        <!-- OFFRE 1 : VERSION STANDARD (5 €) -->
         <div class="game-card">
             <div class="game-image-box">
-                <span class="game-placeholder-text">🌊 Expédition des Mers 🌊</span>
+                <span class="game-placeholder-text">🌊 Version Standard</span>
             </div>
             <div class="game-content">
                 <div>
-                    <h2>Expédition des Mers</h2>
-                    <p>L'aventure interactive ultime pour tes lives TikTok. Fais participer ta communauté en direct !</p>
+                    <h2>Jeu Complet</h2>
+                    <div class="price">5 €</div>
+                    <p>Obtiens l'accès complet au jeu pour animer tes lives TikTok dès maintenant.</p>
                 </div>
-                <div class="btn-group">
-                    <!-- Ton lien PayPal personnel -->
+                <div>
+                    <div class="secure-notice">
+                        🔒 Paiement sécurisé via PayPal. Envoi du lien après validation.
+                    </div>
                     <a href="https://www.paypal.me/PTanghe53" class="btn btn-paypal" target="_blank">💳 Payer 5 € (PayPal)</a>
-                    <!-- Ton lien Google Drive -->
-                    <a href="https://drive.google.com/file/d/1QGhfDdWaYhRo_nHeriVzOOPDXGQTiwlA/view?usp=drive_link" class="btn btn-download" target="_blank">🔥 Télécharger le jeu (.zip)</a>
                 </div>
             </div>
         </div>
 
-        <!-- FUTURE JEU 2 : (Tu pourras dupliquer ce bloc pour ajouter un nouveau jeu plus tard) -->
-        <!-- 
-        <div class="game-card">
+        <!-- OFFRE 2 : VERSION À VIE + MISES À JOUR (40 €) -->
+        <div class="game-card featured">
+            <div class="badge-vip">VIP</div>
             <div class="game-image-box">
-                <span class="game-placeholder-text">🎮 Nom du futur jeu</span>
+                <span class="game-placeholder-text">👑 Version à Vie</span>
             </div>
             <div class="game-content">
                 <div>
-                    <h2>Nom du futur jeu</h2>
-                    <p>Description courte de ton nouveau jeu TikTok interactif.</p>
+                    <h2>Accès VIP à Vie</h2>
+                    <div class="price">40 €</div>
+                    <p>Le jeu complet avec un accès illimité dans le temps pour tes futurs lives.</p>
+                    
+                    <div class="update-notice">
+                        ✨ <strong>Bonus exclusif :</strong> Seule la version à vie bénéficiera des futures mises à jour spéciales et des nouveautés !
+                    </div>
                 </div>
-                <div class="btn-group">
-                    <a href="LIEN_PAYPAL_JEU_2" class="btn btn-paypal" target="_blank">💳 Payer 5 € (PayPal)</a>
-                    <a href="LIEN_GOOGLE_DRIVE_JEU_2" class="btn btn-download" target="_blank">🔥 Télécharger le jeu (.zip)</a>
+                <div>
+                    <div class="secure-notice">
+                        🔒 Paiement sécurisé via PayPal. Envoi du lien après validation.
+                    </div>
+                    <a href="https://www.paypal.me/PTanghe53" class="btn btn-paypal" target="_blank">💳 Payer 40 € (PayPal)</a>
                 </div>
             </div>
         </div>
-        -->
 
     </div>
 
     <footer>
-        Besoin d'aide ou d'un jeu sur mesure ? Contacte-moi sur TikTok.
+        Besoin d'aide ? Contacte-moi sur TikTok après ton paiement.
     </footer>
 
 </body>
